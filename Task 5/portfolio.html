@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Portfolio | Amit Varma</title>
+  <style>
+    /* ===========================
+       GLOBAL THEME VARIABLES
+    ============================ */
+    :root {
+      --primary-color: #0078ff;
+      --dark-bg: #0b0c10;
+      --light-bg: #1f2833;
+      --text-color: #c5c6c7;
+      --white: #fff;
+      --accent: #45a29e;
+      --transition: all 0.3s ease-in-out;
+      --font-main: 'Poppins', sans-serif;
+    }
+
+    /* ===========================
+       GLOBAL STYLES
+    ============================ */
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      color: var(--text-color);
+      background: var(--dark-bg);
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    h1, h2, h3 {
+      color: var(--white);
+    }
+
+    /* ===========================
+       NAVIGATION
+    ============================ */
+    header {
+      background: var(--light-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--primary-color);
+      left: 0;
+      bottom: -5px;
+      transition: var(--transition);
+    }
+
+    nav ul li:hover::after {
+      width: 100%;
+    }
+
+    /* ===========================
+       HERO SECTION
+    ============================ */
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      align-items: center;
+      min-height: 90vh;
+      padding: 2rem 4rem;
+      gap: 3rem;
+      background: linear-gradient(to right, #0b0c10, #1f2833);
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+
+    .hero-content p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      background: var(--primary-color);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      color: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: var(--accent);
+    }
+
+    .hero-img img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ===========================
+       ABOUT SECTION
+    ============================ */
+    .about {
+      padding: 4rem 3rem;
+      background: var(--light-bg);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .about-text p {
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    /* ===========================
+       GALLERY SECTION
+    ============================ */
+    .gallery {
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .grid-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-gallery img {
+      width: 100%;
+      border-radius: 15px;
+      transition: var(--transition);
+      transform: scale(1);
+    }
+
+    .grid-gallery img:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    /* ===========================
+       CONTACT SECTION
+    ============================ */
+    .contact {
+      padding: 4rem 3rem;
+      background: var(--light-bg);
+      text-align: center;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #2e3b4e;
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #bbb;
+    }
+
+    button {
+      background: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    button:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* ===========================
+       FOOTER
+    ============================ */
+    footer {
+      background: #0b0c10;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #1f2833;
+    }
+
+    /* ===========================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Amit Varma</div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Hello, I'm Amit 👋</h1>
+      <p>I’m a Web Developer who builds modern, interactive, and user-friendly web experiences using HTML, CSS, and JavaScript. I focus on clean design, smooth animations, and responsive layouts.</p>
+      <button class="btn">View My Work</button>
+    </div>
+    <div class="hero-img">
+      <img src="profile.png" alt="Portfolio Image">
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="About Image">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>I’m passionate about creating responsive web applications that blend beauty with functionality. I specialize in front-end development and have experience working with modern tools like React, CSS Grid, and Flexbox to build seamless user experiences.</p>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h2>My Projects</h2>
+    <div class="grid-gallery">
+      <img src="https://source.unsplash.com/400x300/?website" alt="Project 1">
+      <img src="https://source.unsplash.com/400x300/?coding" alt="Project 2">
+      <img src="https://source.unsplash.com/400x300/?developer" alt="Project 3">
+      <img src="https://source.unsplash.com/400x300/?technology" alt="Project 4">
+      <img src="https://source.unsplash.com/400x300/?app" alt="Project 5">
+    
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 Amit Varma | Designed with ❤️ using CSS Grid & Flexbox
+  </footer>
+</body>
+</html>
